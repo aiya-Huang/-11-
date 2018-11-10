@@ -151,19 +151,25 @@
             this.getDoodsListData()
         },
         methods:{
-            getGoodsData(){
+            async getGoodsData(){
                 const url = "site/goods/gettopdata/goods"
-                this.$axios.get(url).then(response=>{
-                    // 数据是一个对象类型
-                    this.goodsData = response.data.message
-                })
+                const response = await this.$axios.get(url)
+                this.goodsData = response.data.message
+                // this.$axios.get(url).then(response=>{
+                //     // 数据是一个对象类型
+                //     this.goodsData = response.data.message
+                // })
             },
-            getDoodsListData(){
+            async getDoodsListData(){
                 const url = "site/goods/getgoodsgroup"
-                this.$axios.get(url).then(response=>{
-                    // 数据是一个数组类型
-                    this.goodsList= response.data.message
-                })
+                const response = await this.$axios.get(url)
+                // 数据是一个数组类型
+                this.goodsList= response.data.message
+
+                // this.$axios.get(url).then(response=>{
+                //     // 数据是一个数组类型
+                //     this.goodsList= response.data.message
+                // })
             }
         }
     }
